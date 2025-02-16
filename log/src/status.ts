@@ -10,7 +10,7 @@ export class StatusChecker {
 
     async verifyEndpoint(): Promise<boolean> {
         try {
-            var headers={}
+            let headers={}
             if (this.authorization) {
                 headers={'header':{'Authorization': `Bearer ${this.authorization}`}}
             }
