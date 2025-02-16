@@ -3,8 +3,8 @@ import axios, { AxiosError } from "axios";
   
 
 export class StatusChecker {
-    constructor(private readonly siteName: string, private readonly healthEndpoint: string, private readonly authorization?: string,
-        private readonly logger: ActionLogger) {
+    constructor(private readonly siteName: string, private readonly healthEndpoint: string,
+        private readonly logger: ActionLogger, private readonly authorization?: string) {
         logger.info(`Created Status Checker for ${siteName}`);
     }
 

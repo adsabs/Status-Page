@@ -72,8 +72,8 @@ const run = async () => {
   const now = moment().unix();
 
   // Run tests on each required source
-  for (const [name, url, Authorization] of sources) {
-    const statusChecker = new StatusChecker(name, url, Authorization, logger);
+  for (const [name, url, authorization] of sources) {
+    const statusChecker = new StatusChecker(name, url, logger, authorization);
     const result = await statusChecker.verifyEndpoint();
 
     let report: ReportFile["site"][number]["status"] | undefined = siteResult.get(name);
