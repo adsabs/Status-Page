@@ -54,6 +54,7 @@ jobs:
             ADS Bumblebee->https://ui.adsabs.harvard.edu
             ADS Bootstrap->https://api.adsabs.harvard.edu/v1/accounts/bootstrap
             ADS API Status->https://api.adsabs.harvard.edu/v1/ready
+            ADS Search->https://api.adsabs.harvard.edu/v1/search/ready->${{ secrets.ADS_TOKEN }}
             ADS Core Abstracts->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/abstract
             SciXplorer->https://scixplorer.org
             Astrophysicist-Adjacent->https://astrophysicist-adjacent.com
