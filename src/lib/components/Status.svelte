@@ -52,7 +52,6 @@
 					year: 'numeric',
 					hour: '2-digit',
 					minute: '2-digit'
-
 				})}
 				class:bg-success={status === StatusCode.OK}
 				class:bg-warning={status === StatusCode.UNSTABLE}
