@@ -12,7 +12,7 @@ export class StatusChecker {
         try {
             let headers={}
             if (this.authorization) {
-                headers={'header':{'Authorization': `Bearer ${this.authorization}`}}
+                headers={'headers':{'Authorization': `Bearer ${this.authorization}`}}
             }
             this.logger.info(`Contacting ${this.siteName}`);
             const request = await axios.get(this.healthEndpoint, headers);
