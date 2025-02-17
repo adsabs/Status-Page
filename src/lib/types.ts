@@ -8,7 +8,7 @@ export interface ReportFile {
 
 export interface Status {
 	status: StatusCode;
-	date: Date;
+	date: string;
 }
 
 export enum StatusCode {
