@@ -26,7 +26,7 @@ export function loadStatusReport(): Array<[string, Status[]]> {
 
 			// We first check if the following event happened less than 24 hours from the current event
 			// We compare the current date to the end of the next event's day (to ensure that it happened in the same day)
-			if (Math.abs(moment.unix(event.timestamp).startOf('day').diff(current[0], 'hours')) < 24) {
+			if (Math.abs(moment.unix(event.timestamp).startOf('day').diff(current[0], 'hours')) < 1) {
 				const [, currentStatus] = current;
 				// If it happened in the same day, we check if the status is different:
 				// Unless that we have an error, if so we report the error as existing at EOD
