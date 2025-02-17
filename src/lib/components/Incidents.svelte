@@ -13,7 +13,7 @@
 				{#if i > 0}
 					<hr class:bg-primary={incident.open} />
 				{/if}
-				<div class="timeline-start">{moment.unix(incident.date).format('MMM Do YY')}</div>
+				<div class="timeline-start">{moment.unix(incident.date).format('MMM Do YY HH:MM')}</div>
 				<div class="timeline-middle" class:text-primary={incident.open}>
 					<div class="badge" class:badge-primary={incident.open}>
 						{#if incident.open}

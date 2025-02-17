@@ -5,7 +5,7 @@ on:
     branches: ['main']
   workflow_dispatch:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/5 * * * *'
   issues:
     types: [opened, closed]
 
@@ -55,7 +55,11 @@ jobs:
             ADS Bootstrap->https://api.adsabs.harvard.edu/v1/accounts/bootstrap
             ADS API Status->https://api.adsabs.harvard.edu/v1/ready
             ADS Search->https://api.adsabs.harvard.edu/v1/search/ready->${{ secrets.ADS_TOKEN }}
+            ADS Export->https://api.adsabs.harvard.edu/v1/export/ready->${{ secrets.ADS_TOKEN }}
+            ADS Libraries->https://api.adsabs.harvard.edu/v1/biblib/ready->${{ secrets.ADS_TOKEN }}
             ADS Core Abstracts->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/abstract
+            ADS Core Exports->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/exportcitation
+            ADS Core Metrics->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/metrics
             SciXplorer->https://scixplorer.org
             Astrophysicist-Adjacent->https://astrophysicist-adjacent.com
           GITHUB_TOKEN: ${{ github.token }}
