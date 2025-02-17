@@ -41,7 +41,7 @@ export function loadStatusReport(): Array<[string, Status[]]> {
 			} else {
 				const [currentDay, currentStatus] = current;
 				// If the event happened with more than 24 hours from the start of day, we push the old date
-				siteLogs.push({ status: currentStatus, date: currentDay.toDate() });
+				siteLogs.push({ status: currentStatus, date: currentDay.format('YYYY-MM-DD HH:mm') });
 
 				// We update the date to the current one
 				current = [moment.unix(event.timestamp), event.result ? 0 : 1];
@@ -49,7 +49,7 @@ export function loadStatusReport(): Array<[string, Status[]]> {
 		}
 
 		// Once the loop is over, we want to push the last day that never got push
-		siteLogs.push({ status: current[1], date: current[0].toDate() });
+		siteLogs.push({ status: current[1], date: current[0].format('YYYY-MM-DD HH:mm') });
 
 		// And we add this array to the dictionary with the site's name
 		statusReport.push([report.name, siteLogs.reverse()]);
