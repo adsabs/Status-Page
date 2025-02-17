@@ -26,7 +26,7 @@ export function loadStatusReport(): Array<[string, Status[]]> {
 
 			// We first check if the following event happened less than 24 hours from the current event
 			// We compare the current date to the end of the next event's day (to ensure that it happened in the same day)
-			if (Math.abs(moment.unix(event.timestamp).startOf('day').diff(current[0], 'hours')) < 1) {
+			if (Math.abs(moment.unix(event.timestamp).startOf('day').diff(current[0], 'hours')) < 24) {
 				const [, currentStatus] = current;
 				// If it happened in the same day, we check if the status is different:
 				// Unless that we have an error, if so we report the error as existing at EOD
@@ -41,7 +41,7 @@ export function loadStatusReport(): Array<[string, Status[]]> {
 			} else {
 				const [currentDay, currentStatus] = current;
 				// If the event happened with more than 24 hours from the start of day, we push the old date
-				siteLogs.push({ status: currentStatus, date: currentDay.format('YYYY-MM-DD HH:mm') });
+				siteLogs.push({ status: currentStatus, date: currentDay.toDate() });
 
 				// We update the date to the current one
 				current = [moment.unix(event.timestamp), event.result ? 0 : 1];
@@ -49,7 +49,7 @@ export function loadStatusReport(): Array<[string, Status[]]> {
 		}
 
 		// Once the loop is over, we want to push the last day that never got push
-		siteLogs.push({ status: current[1], date: current[0].format('YYYY-MM-DD HH:mm') });
+		siteLogs.push({ status: current[1], date: current[0].toDate() });
 
 		// And we add this array to the dictionary with the site's name
 		statusReport.push([report.name, siteLogs.reverse()]);
