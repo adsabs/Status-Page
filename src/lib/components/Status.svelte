@@ -25,7 +25,7 @@
 	<div class="flex justify-between flex-col md:flex-row">
 		<div class="flex items-center gap-3">
 			<div
-				class="badge"
+				class="badge text-gray-800"
 				class:bg-lime-500={lastStatus.status === StatusCode.OK}
 				class:bg-orange-500={lastStatus.status === StatusCode.ERROR}
 				class:bg-yellow-400={lastStatus.status === StatusCode.UNSTABLE}
