@@ -36,9 +36,9 @@
 				<div class="flex items-center gap-2">
 					<div
 						class="badge"
-						class:badge-success={systemState === StatusCode.OK}
-						class:badge-error={systemState === StatusCode.ERROR}
-						class:badge-warning={systemState === StatusCode.UNSTABLE}
+						class:bg-lime-500={systemState === StatusCode.OK}
+						class:bg-orange-500={systemState === StatusCode.ERROR}
+						class:bg-yellow-400={systemState === StatusCode.UNSTABLE}
 					>
 						{systemState === StatusCode.OK ? '✓' : systemState === StatusCode.ERROR ? '⤫' : '?'}
 					</div>
