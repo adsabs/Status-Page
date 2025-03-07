@@ -3,12 +3,12 @@
 </script>
 
 <slot />
-<footer class="footer bg-black text-white p-4 sticky top-[100vh]">
-	<div class="flex max-w-3xl min-w-[50vw] mx-auto justify-evenly">
+<footer class="footer bg-black text-white p-4 sticky top-[100vh] w-full font-helvetica">
+	<div class="flex min-w-[80vw] mx-auto justify-evenly">
 		<div class="max-w-80">
 			&copy; The SAO Astrophysics Data System
-			<div class="my-5">
-				<p>
+			<div class="text-gray-400">
+				<p class="mb-4">
 					<i class="fa fa-envelope" aria-hidden="true"></i>
 					adshelp[at]cfa.harvard.edu
 				</p>
@@ -49,7 +49,7 @@
 					</a>
 				</div>
 			</div>
-			<div>
+			<div class="text-gray-400 text-xs italic">
 				*The material contained in this document is based upon work supported by a National
 				Aeronautics and Space Administration (NASA) grant or cooperative agreement. Any opinions,
 				findings, conclusions or recommendations expressed in this material are those of the author
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div>
-			<div>Resources</div>
+			<div class="mb-2">RESOURCES</div>
 			<ul>
 				<li>
 					<a href="https://ui.adsabs.harvard.edu/about/" target="_blank" rel="noreferrer noopener">
@@ -100,7 +100,7 @@
 			</ul>
 		</div>
 		<div>
-			<div>Social</div>
+			<div class="mb-2">SOCIAL</div>
 			<ul>
 				<li>
 					<a href="https://twitter.com/adsabs" target="_blank" rel="noreferrer noopener">
@@ -115,7 +115,7 @@
 			</ul>
 		</div>
 		<div>
-			<div>Project</div>
+			<div class="mb-2">PROJECT</div>
 			<ul>
 				<li>
 					<a
@@ -151,6 +151,6 @@
 
 <style lang="postcss">
 	a {
-		@apply text-blue-500 link;
+		@apply text-gray-400 link no-underline;
 	}
 </style>
