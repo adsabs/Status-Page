@@ -26,7 +26,7 @@ export class IncidentManager {
             })) {
                 const creationDate = moment(issue.created_at);
                 if (Math.abs(creationDate.diff(moment.now(), "days")) < maxAge) {
-                    incidents.push({ date: creationDate.unix(), title: issue.title, open: issue.state === "open" });
+                    incidents.push({ date: creationDate.unix(), title: issue.title, open: issue.state === "open", url: issue.html_url });
                 } else {
                     this.logger.info(`Issue ${issue.title} is older than ${maxAge} days`);
                 }

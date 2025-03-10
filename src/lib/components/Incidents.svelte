@@ -21,7 +21,9 @@
 						<div class="badge">✓</div>
 					{/if}
 				</div>
-				<div class="timeline-end timeline-box">{incident.title}</div>
+				<div class="timeline-end timeline-box">
+					<a href={incident.url} target="_blank">{incident.title}</a>
+				</div>
 
 				{#if i < incidents.length - 1}
 					<hr class:bg-blue-500={incident.open} />
