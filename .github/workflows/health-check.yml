@@ -50,8 +50,7 @@ jobs:
         run: npm start
         id: metrics
         env:
-          SOURCES: |
-            ADS site ->https://ui.adsabs.harvard.edu
+          SOURCES: ADS site ->https://ui.adsabs.harvard.edu
             SciXplorer site ->https://scixplorer.org
             API Status->https://api.adsabs.harvard.edu/v1/ready
             Search->https://api.adsabs.harvard.edu/v1/search/ready->${{ secrets.ADS_TOKEN }}
