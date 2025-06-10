@@ -5,14 +5,14 @@ on:
     branches: ['main']
   workflow_dispatch:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
   issues:
     types: [opened, closed]
 
 env:
   ARTIFACT_NAME: reports
   AGE_LIMIT: ${{ vars.AGE_LIMIT }}
-  IGNORE_PREV_ARTIFACT: false
+  IGNORE_PREV_ARTIFACT: ${{ vars.IGNORE_PREV_ARTIFACT }}
 jobs:
   get-metrics:
     runs-on: ubuntu-latest
