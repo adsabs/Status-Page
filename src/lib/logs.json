@@ -3,17 +3,20 @@
         {
             "date": 1722944823,
             "title": "Service is under planned maintance",
-            "open": true
+            "open": true,
+            "url": "https://scixplorer.org"
         },
         {
             "date": 1722742050,
             "title": "Unexpected error with server",
-            "open": true
+            "open": true,
+            "url": "https://scixplorer.org"
         },
         {
             "date": 1722312043,
             "title": "System is migrating to new servers",
-            "open": false
+            "open": false,
+            "url": "https://scixplorer.org"
         }
     ],
     "site": [

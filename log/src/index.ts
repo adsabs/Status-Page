@@ -2,7 +2,7 @@ import { setFailed, setOutput } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import { Context } from "@actions/github/lib/context";
 
-import { envsafe, num, str } from "envsafe";
+import { envsafe, num, str, bool } from "envsafe";
 import moment from "moment";
 import { ArtifactManager } from "./github/artifact";
 import { Repo } from "./github/types";
@@ -26,6 +26,9 @@ export const env = envsafe({
   INCIDENT_LABEL: str({
     default: "incident",
     desc: "Name of the label. Not case sensitive"
+  }),
+  IGNORE_PREV_ARTIFACT: bool({
+    default: false,
   })
 });
 
@@ -57,16 +60,22 @@ const run = async () => {
   const artifactManager = new ArtifactManager(api, logger, env.ARTIFACT_NAME);
   const incidentManager = new IncidentManager(api, logger, env.INCIDENT_LABEL);
 
-  const artifact = await artifactManager.getPreviousArtifact(repo, env.JOB_NAME);
-  logger.info(`Found artifact with ${artifact?.site.length ?? 0} elements`);
-
   const siteResult: Map<string, ReportFile["site"][number]["status"]> = new Map();
 
-  if (artifact) {
-    logger.info(`Mapping old report`);
-    artifact.site.forEach(report => {
-      siteResult.set(report.name, report.status)
-    });
+  if (!env.IGNORE_PREV_ARTIFACT) {
+    const sourceNames = sources.map(s => s[0]);
+    const artifact = await artifactManager.getPreviousArtifact(repo, env.JOB_NAME);
+    logger.info(`Found artifact with ${artifact?.site.length ?? 0} elements`);
+    if (artifact) {
+      logger.info(`Mapping old report`);
+      artifact.site.forEach(report => {
+        if (sourceNames.includes(report.name)){
+          siteResult.set(report.name, report.status);
+        }
+      });
+    }
+  } else {
+    logger.info('Ignore previous artifact');
   }
 
   const now = moment().unix();

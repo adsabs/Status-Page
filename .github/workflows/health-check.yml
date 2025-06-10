@@ -12,6 +12,7 @@ on:
 env:
   ARTIFACT_NAME: reports
   AGE_LIMIT: ${{ vars.AGE_LIMIT }}
+  IGNORE_PREV_ARTIFACT: false
 jobs:
   get-metrics:
     runs-on: ubuntu-latest
@@ -50,7 +51,7 @@ jobs:
         run: npm start
         id: metrics
         env:
-          SOURCES: 
+          SOURCES: |
             ADS site->https://ui.adsabs.harvard.edu
             SciXplorer site->https://scixplorer.org
             API Status->https://api.adsabs.harvard.edu/v1/ready
@@ -65,6 +66,7 @@ jobs:
           JOB_NAME: ${{ github.workflow }}
           ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
           AGE_LIMIT: ${{ vars.AGE_LIMIT }}
+          IGNORE_PREV_ARTIFACT: ${{ vars.IGNORE_PREV_ARTIFACT }}
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}

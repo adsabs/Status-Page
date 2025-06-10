@@ -67,10 +67,16 @@ export class ArtifactManager {
         artifact_id: artifact.id,
         archive_format: "zip"
       });
-      await writeFile(`${this.artifactName}.zip`, Buffer.from(response.data as string));
-      execSync(`unzip -o ${this.artifactName}.zip -d ./logs`);
 
-      this.logger.info("Artifact downloaded correctly");
+      try{
+        await writeFile(`${this.artifactName}.zip`, Buffer.from(response.data as string));
+        execSync(`unzip -o ${this.artifactName}.zip -d ./logs`);
+
+        this.logger.info("Artifact downloaded correctly");
+      } catch  {
+        this.logger.warn("Unable to download artifact");
+        return null;
+      }
 
       const artifactLocation = resolve(`./logs/${this.artifactName}.json`);
       this.logger.info("Artifact downloaded to " + artifactLocation);

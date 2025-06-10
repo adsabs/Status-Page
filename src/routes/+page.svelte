@@ -13,6 +13,7 @@
 		<img
 			src="https://scixplorer.org/styles/img/newsletter-banner.jpg"
 			class="max-w-3xl min-w-[50vw] mx-auto"
+			alt="scix banner"
 		/>
 	</div>
 	<div class="max-w-3xl min-w-[50vw] mx-auto">
