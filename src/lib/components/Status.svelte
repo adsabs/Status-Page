@@ -7,7 +7,12 @@
 	const calculateDifferenceInDays = (firstDate: Date, secondDate: Date): number =>
 		Math.ceil(Math.abs(+firstDate - +secondDate) / (1000 * 60 * 60 * 24)) + 1;
 
+	const calculateDaysFromNow = (date: Date): number =>
+		Math.floor(Math.abs(+date - new Date()) / (1000 * 60 * 60 * 24));
+
 	let message = 'Lacking historical data';
+	let leftTick = '';
+	let rightTick = '';
 	let lastStatus: Status = { status: StatusCode.ERROR, date: new Date() };
 	if (statuses.length > 0) {
 		lastStatus = statuses[statuses.length - 1];
@@ -18,6 +23,10 @@
 		);
 
 		message = `Operation in last ${calculateDifferenceInDays(statuses[0].date, lastStatus.date)} days: ${operationPercentage}%`;
+		const diffLeft = calculateDaysFromNow(statuses[0].date);
+		const diffRight = calculateDaysFromNow(lastStatus.date);
+		leftTick = diffLeft === 0 ? 'Today' : `${diffLeft} days ago`;
+		rightTick = diffRight === 0 ? 'Today' : `${diffRight} days ago`;
 	}
 </script>
 
@@ -59,5 +68,10 @@
 				class="tooltip ml-0.5 sm:rounded-lg flex-1 h-8 transition ease-in-out delay-150 hover:-translate-y-1"
 			></div>
 		{/each}
+	</div>
+
+	<div class="flex justify-between flex-col md:flex-row text-sm mt-2">
+		<p>{leftTick}</p>
+		<p class="text-right">{rightTick}</p>
 	</div>
 </div>
