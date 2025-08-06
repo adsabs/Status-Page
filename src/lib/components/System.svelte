@@ -30,7 +30,7 @@
 </script>
 
 <div class="md:my-10">
-	<div class="card bg-base-100 w-full my-8 shadow-xl">
+	<div class="card bg-base-100 w-full mt-8 mb-4 shadow-xl">
 		<div class="card-body">
 			<div class="flex flex-col md:flex-row gap-y-4 items-center justify-between">
 				<div class="flex items-center gap-2">
@@ -55,5 +55,10 @@
 				</h3>
 			</div>
 		</div>
+	</div>
+	<div class="text-right">
+		<a class="hover:underline text-sm text-blue-500" href="mailto:adshelp@cfa.harvard.edu"
+			>Email Help</a
+		>
 	</div>
 </div>
