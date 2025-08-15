@@ -52,16 +52,15 @@ jobs:
         id: metrics
         env:
           SOURCES: |
-            ADS site->https://ui.adsabs.harvard.edu
-            SciXplorer site->https://scixplorer.org
-            API Status->https://api.adsabs.harvard.edu/v1/ready
-            Search->https://api.adsabs.harvard.edu/v1/search/ready->${{ secrets.ADS_TOKEN }}
-            Export->https://api.adsabs.harvard.edu/v1/export/ready->${{ secrets.ADS_TOKEN }}
-            Libraries->https://api.adsabs.harvard.edu/v1/biblib/ready->${{ secrets.ADS_TOKEN }}
-            Session Initialization->https://api.adsabs.harvard.edu/v1/accounts/bootstrap
-            ADS Basic HTML Abstracts->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/abstract
-            ADS Basic HTML Exports->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/exportcitation
-            ADS Basic HTML Metrics->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/metrics
+            ADS homepage is up->https://ui.adsabs.harvard.edu
+            SciXplorer homepage is up->https://scixplorer.org
+            Website accepts requests->https://api.adsabs.harvard.edu/v1/accounts/bootstrap
+            Database is accessible->https://api.adsabs.harvard.edu/v1/ready
+            Search results are returned->https://api.adsabs.harvard.edu/v1/search/ready->${{ secrets.ADS_TOKEN }}
+            Export citation feature is working->https://api.adsabs.harvard.edu/v1/export/ready->${{ secrets.ADS_TOKEN }}
+            Personal and public libraries are accessible->https://api.adsabs.harvard.edu/v1/biblib/ready->${{ secrets.ADS_TOKEN }}
+            ADS Basic HTML abstract pages are available->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/abstract
+            ADS Basic HTML export citation feature is working->https://ui.adsabs.harvard.edu/abs/1996PhRvL..77.3865P/exportcitation
           GITHUB_TOKEN: ${{ github.token }}
           JOB_NAME: ${{ github.workflow }}
           ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
