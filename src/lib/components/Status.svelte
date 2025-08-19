@@ -8,7 +8,7 @@
 		Math.ceil(Math.abs(+firstDate - +secondDate) / (1000 * 60 * 60 * 24)) + 1;
 
 	const calculateDaysFromNow = (date: Date): number =>
-		Math.floor(Math.abs(+date - new Date()) / (1000 * 60 * 60 * 24));
+		Math.floor(Math.abs(+date - +new Date()) / (1000 * 60 * 60 * 24));
 
 	let message = 'Lacking historical data';
 	let leftTick = '';
