@@ -25,10 +25,9 @@ export class IncidentManager {
                 }
             })) {
                 const creationDate = moment(issue.created_at);
-                if (Math.abs(creationDate.diff(moment.now(), "days")) < maxAge) {
+
+                if (issue.state === 'open' || (issue.state === 'closed' && moment().diff(moment(issue.closed_at), "days") <= maxAge)) {
                     incidents.push({ date: creationDate.unix(), title: issue.title, open: issue.state === "open", url: issue.html_url });
-                } else {
-                    this.logger.info(`Issue ${issue.title} is older than ${maxAge} days`);
                 }
             }
         }
